@@ -1,0 +1,239 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Responsive Web Design</title>
+
+    <link rel="stylesheet" href="css/reveal.css">
+    <link rel="stylesheet" href="css/theme/night.css">
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/zenburn.css">
+
+    <!-- Printing and PDF exports -->
+    <script>
+        var link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <h4>Responsive Web Design</h4>
+                <small class="fragment fade-right">Created by <a href="https://github.com/Yurec0gurec">Yurec_0gurec</a></small>
+            </section>
+            <section>
+                <h4>What is Responsive Web Design?</h4>
+                <small class="fragment fade-left">Responsive Web Design is about using HTML and CSS to automatically resize, hide, shrink, or enlarge, a website, to make it look good on all devices (desktops, tablets, and phones)</small>
+            </section>
+            <section>
+                <section>
+                    <h4>Setting the viewport</h4>
+                    <pre class="fragment fade-right"><code class="hljs" data-trim contenteditable>
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+				</code></pre>
+                </section>
+                <section>
+                    <h5>Difference</h5>
+                    <img src='img/no-vp.png' width="330" height="620" style="display: inline-block" class="fragment fade-left">
+                    <img src='img/vp.png' width="330" height="620" style="display: inline-block" class="fragment fade-right">
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h4>Special features of the viewing area</h4>
+                    <ul>
+                        <li class="fragment fade-right>minimum-scale">minimum-scale</li>
+                        <li class="fragment fade-right"> maximum-scale</li>
+                        <li class="fragment fade-right">user-scalable</li>
+                    </ul>
+                </section>
+                <section>
+                    <h4>Principles</h4>
+                    <ul>
+                        <li class="fragment fade-right>minimum-scale">Do not use large items with a fixed width.</li>
+                        <li class="fragment fade-right"> To correctly display content, don't limit it to a specific width of the viewing area.</li>
+                        <li class="fragment fade-right">Use CSS media queries to specify different styles for large and small screens.</li>
+                    </ul>
+                </section>
+                <section>
+                    <h5>Difference</h5>
+                    <img src='img/vp-fixed-n5.png' width="330" height="620" style="display: inline-block" class="fragment fade-left">
+                    <img src='img/vp-fixed-iph.png' width="330" height="620" style="display: inline-block" class="fragment fade-right">
+                    
+                </section>
+            </section>
+            <!--
+            <section>
+                <h4>Responsive images</h4>
+            </section>
+-->
+            <section>
+                <section>
+                    <h4>
+                        Media Queries
+                    </h4>
+                </section>
+                <section>
+                    <pre><code class="hljs" data-trim contenteditable>
+                 <link rel="stylesheet" href="print.css" media="print">
+				</code></pre>
+                    <pre><code class="hljs fragment fade-left" data-trim contenteditable>
+                 @media (query) {
+                      /* CSS Rules used when query matches */
+                }
+				</code></pre>
+                    <pre><code class="hljs fragment fade-left" data-trim contenteditable>
+                 @media print {
+                      /* print style sheets go here */
+                }
+                @import url(print.css) print;
+				</code></pre>
+
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h4>Main attributes</h4>
+                    <table style="font-size: 25px">
+                        <thead>
+                            <tr>
+                                <th>Attribute</th>
+                                <th>Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>min-width</td>
+                                <td>The rule applies to the browser whose width is greater than the value specified in the request.</td>
+
+                            </tr>
+                            <tr>
+                                <td>max-width</td>
+                                <td>
+                                    The rule applies to the browser whose width is less than the value specified in the request.</td>
+
+                            </tr>
+                            <tr>
+                                <td>min-height</td>
+                                <td>
+                                    The rule applies to the browser whose height is greater than the value specified in the request.</td>
+
+                            </tr>
+                            <tr>
+                                <td>max-height</td>
+                                <td>The rule applies to the browser whose height is less than the value specified in the request.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>orientation=portrait</td>
+                                <td>The rule applies to the browser whose height is not less than its width.
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>orientation=landscape</td>
+                                <td>
+                                    The rule applies to a browser that is wider than its height.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </section>
+                <section>
+                    <pre><code class="hljs" data-trim contenteditable style="width: 950px">
+<link rel="stylesheet" media="(max-width: 640px)" href="max-640px.css">
+<link rel="stylesheet" media="(min-width: 640px)" href="min-640px.css">
+<link rel="stylesheet" media="(orientation: portrait)" href="portrait.css">
+<link rel="stylesheet" media="(orientation: landscape)" href="landscape.css">
+<style>
+  @media (min-width: 500px) and (max-width: 600px) {
+    h1 {
+      color: fuchsia;
+    }
+
+    .desc:after {
+      content:" In fact, it's between 500px and 600px wide.";
+    }
+  }
+</style>
+				</code></pre>
+                    <p class="fragment fade-left"><span style="color: red">NOTE:</span> min-width <a href="https://www.sitepoint.com/media-queries-width-vs-device-width/">vs</a> min-device-width</p>
+                </section>
+            </section>
+            <section>
+                <section>
+                    <h4>Relative units usage</h4>
+
+                </section>
+                <section>
+                    <small><span style="color: red">Not recommended</span> — fixed width</small>
+                    <pre><code class="hljs" data-trim contenteditable style="width: 950px">
+
+
+  div.fullWidth {
+  width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+				</code></pre>
+                    <small><span style="color: green"> recommended</span> — responsive width</small>
+                    <pre><code class="hljs" data-trim contenteditable style="width: 950px">
+
+
+div.fullWidth {
+  width: 100%;
+}
+
+				</code></pre>
+                </section>
+            </section>
+            <section>
+                <h3>Thanks for attention.</h3>
+            </section>
+
+
+
+        </div>
+    </div>
+
+    <script src="lib/js/head.min.js"></script>
+    <script src="js/reveal.js"></script>
+
+    <script>
+        // More info about config & dependencies:
+        // - https://github.com/hakimel/reveal.js#configuration
+        // - https://github.com/hakimel/reveal.js#dependencies
+        Reveal.initialize({
+            dependencies: [{
+                    src: 'plugin/markdown/marked.js'
+                },
+                {
+                    src: 'plugin/markdown/markdown.js'
+                },
+                {
+                    src: 'plugin/notes/notes.js',
+                    async: true
+                },
+                {
+                    src: 'plugin/highlight/highlight.js',
+                    async: true,
+                    callback: function() {
+                        hljs.initHighlightingOnLoad();
+                    }
+                }
+            ]
+        });
+    </script>
+</body>
+
+</html>
